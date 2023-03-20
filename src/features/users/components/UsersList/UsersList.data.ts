@@ -1,7 +1,7 @@
-import { User } from '@/common';
+import { UserFieldName } from '@/common';
 
 export interface HeadCell {
-  id: keyof User | 'edit' | 'delete'
+  id: UserFieldName | 'edit' | 'delete'
   label: string;
 }
 

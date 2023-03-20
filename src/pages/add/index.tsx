@@ -1,6 +1,6 @@
 import { Layout } from '@/features'
 import { UserForm } from '@/features/users/components'
-import { Card, Typography } from '@mui/material'
+import { Typography } from '@mui/material'
 import { CardHeader, StyledCard } from './index.styled'
 
 const Add = () => {

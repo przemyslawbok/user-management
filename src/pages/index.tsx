@@ -1,7 +1,7 @@
 import { Layout, UsersList } from '@/features'
 import { CardHeader } from './index.styled'
 import { Button, Card, CardContent, Typography } from '@mui/material'
-import { addUserClick } from './index.logic'
+import { onAddUserClick } from './index.logic'
 
 const Home = () => {
   return (
@@ -10,7 +10,7 @@ const Home = () => {
         <CardContent>
           <CardHeader>
             <Typography variant="h5">User List</Typography>
-            <Button variant="contained" onClick={addUserClick}>
+            <Button variant="contained" onClick={onAddUserClick}>
               Add new
             </Button>
           </CardHeader>

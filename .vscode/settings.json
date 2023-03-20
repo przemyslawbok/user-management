@@ -11,7 +11,8 @@
   "prettier.singleQuote": true,
   "cSpell.ignoreWords": [
     "fontsource",
-    "reduxjs"
+    "reduxjs",
+    "hookform"
   ],
-  "prettier.jsxSingleQuote": true
+  "prettier.jsxSingleQuote": true,
 }

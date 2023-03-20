@@ -5,3 +5,5 @@ export interface User {
   email: string,
   city: string
 }
+
+export type UserFieldName = keyof User
