@@ -1,6 +1,7 @@
 import Head from 'next/head'
-import styles from '@/styles/Home.module.css'
 import { UsersList } from '@/features'
+import { CardHeader, Main, Wrapper } from './index.styled'
+import { Button, Card, CardContent, Typography } from '@mui/material'
 
 export default function Home() {
   return (
@@ -11,9 +12,19 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
-        <UsersList />
-      </main>
+      <Main>
+        <Wrapper>
+          <Card>
+            <CardContent>
+              <CardHeader>
+                <Typography variant="h5">User List</Typography>
+                <Button variant="contained">Add new</Button>
+              </CardHeader>
+              <UsersList />
+            </CardContent>
+          </Card>
+        </Wrapper>
+      </Main>
     </>
   )
 }

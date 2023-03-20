@@ -10,6 +10,7 @@
   "eslint.validate": ["typescript", "typescriptreact"],
   "prettier.singleQuote": true,
   "cSpell.ignoreWords": [
+    "fontsource",
     "reduxjs"
   ],
   "prettier.jsxSingleQuote": true

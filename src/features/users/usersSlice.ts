@@ -8,6 +8,13 @@ const initialState: User[] = [
     username: 'Jules',
     email: 'a@a.pl',
     city: 'Białystok',
+  },
+    { 
+    id: 2,
+    name: 'Adam',
+    username: 'Torineq',
+    email: 'b@b.pl',
+    city: 'Białystok',
   }
 ]
 
