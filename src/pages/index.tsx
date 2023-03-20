@@ -6,7 +6,7 @@ import { addUserClick } from './index.logic'
 const Home = () => {
   return (
     <Layout name="Home" description="User Management Home Page">
-      <Card>
+      <Card sx={{ maxWidth: 800 }}>
         <CardContent>
           <CardHeader>
             <Typography variant="h5">User List</Typography>
