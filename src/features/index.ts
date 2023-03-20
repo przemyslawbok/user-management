@@ -1,4 +1,5 @@
+import { Layout } from './ui';
 import { UsersList, usersReducer } from './users';
 
-export { UsersList }
-export {usersReducer}
+export { Layout, UsersList }
+export { usersReducer }

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { User } from '@/common';
+import { User } from '@/common'
 
 const initialState: User[] = [
   { 
@@ -22,8 +22,18 @@ const usersSlice = createSlice({
   name: 'users',
   initialState,
   reducers: {
-
+    addUser: (state, action) => {
+      state.push(action.payload)
+    }
   }
 })
 
-export default usersSlice.reducer;
+interface IUserState {
+  users: User[]
+}
+
+export const getAllUsers = (state: IUserState) => state.users
+
+export const { addUser } = usersSlice.actions
+
+export default usersSlice.reducer

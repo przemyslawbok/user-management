@@ -1,11 +1,7 @@
 import { User } from '@/common';
 
-export interface IRootState {
-  users: User[]
-}
-
 export interface HeadCell {
-  id: keyof User | 'edit' | 'delete';
+  id: keyof User | 'edit' | 'delete'
   label: string;
 }
 

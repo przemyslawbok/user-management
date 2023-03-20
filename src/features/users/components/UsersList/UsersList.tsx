@@ -1,18 +1,18 @@
 import { User } from '@/common'
-import {
-  Button,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableRow,
-} from '@mui/material'
+import { TableBody, TableCell, TableContainer, TableRow } from '@mui/material'
 import React, { FC } from 'react'
 import { useSelector } from 'react-redux'
-import { HeadCell, headCells, IRootState } from './UsersList.data'
-import { StyledTable, StyledTableHead } from './UsersList.styled'
+import { getAllUsers } from '@/features/users'
+import { HeadCell, headCells } from './UsersList.data'
+import {
+  DeleteButton,
+  EditButton,
+  StyledTable,
+  StyledTableHead,
+} from './UsersList.styled'
 
 const UsersList: FC = () => {
-  const users = useSelector((state: IRootState) => state.users)
+  const users = useSelector(getAllUsers)
 
   return (
     <TableContainer>
@@ -33,10 +33,10 @@ const UsersList: FC = () => {
               <TableCell>{user.email}</TableCell>
               <TableCell>{user.city}</TableCell>
               <TableCell>
-                <Button variant="contained">edit</Button>
+                <EditButton variant="contained">edit</EditButton>
               </TableCell>
               <TableCell>
-                <Button variant="contained">delete</Button>
+                <DeleteButton variant="contained">delete</DeleteButton>
               </TableCell>
             </TableRow>
           ))}
