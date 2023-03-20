@@ -10,16 +10,7 @@
   "eslint.validate": ["typescript", "typescriptreact"],
   "prettier.singleQuote": true,
   "cSpell.ignoreWords": [
-    "Signup",
-    "appspot",
-    "autofix",
-    "firebaseapp",
-    "firestore",
-    "kebabcase",
-    "mantine",
-    "paren",
-    "parens",
-    "wesbos"
+    "reduxjs"
   ],
   "prettier.jsxSingleQuote": true
 }
