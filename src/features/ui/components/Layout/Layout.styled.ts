@@ -4,6 +4,7 @@ export const Main = styled.main`
   background-color: #e7ebf0;
   width: 100vw;
   height: 100vh;
+  overflow-y: scroll;
 
   display: flex;
   align-items: center;

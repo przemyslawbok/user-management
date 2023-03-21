@@ -1,19 +1,13 @@
 import { User } from '@/common'
 import { TableBody, TableCell, TableContainer, TableRow } from '@mui/material'
 import { FC } from 'react'
-import { useSelector } from 'react-redux'
-import { getAllUsers } from '@/features'
 import { HeadCell, headCells } from './UsersList.data'
-import {
-  DeleteButton,
-  EditButton,
-  StyledTable,
-  StyledTableHead,
-} from './UsersList.styled'
+import { DeleteButton, EditButton, StyledTable, StyledTableHead } from './UsersList.styled'
 import { onEditClick } from './UsersList.logic'
+import { useGetUsersQuery } from '@/features'
 
 const UsersList: FC = () => {
-  const users = useSelector(getAllUsers)
+  const { data: users, isLoading, isSuccess, isError, error } = useGetUsersQuery()
 
   return (
     <TableContainer>
@@ -26,7 +20,7 @@ const UsersList: FC = () => {
           </TableRow>
         </StyledTableHead>
         <TableBody>
-          {users.map((user: User) => (
+          {users?.map((user: User) => (
             <TableRow key={user.id}>
               <TableCell>{user.id}</TableCell>
               <TableCell>{user.name}</TableCell>

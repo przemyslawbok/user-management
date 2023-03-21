@@ -1,14 +1,14 @@
 import { User } from '@/common'
-import { Layout, UserForm, addUser } from '@/features'
+import { Layout, UserForm } from '@/features'
+import { useAddUserMutation } from '@/features/users/usersSlice'
 import { Typography } from '@mui/material'
-import { useDispatch } from 'react-redux'
 import { CardHeader, StyledCard } from './index.styled'
 
 const Add = () => {
-  const dispatch = useDispatch()
+  const [addUser, { isLoading }] = useAddUserMutation()
 
   const formSubmitAction = (data: User) => {
-    dispatch(addUser(data))
+    addUser(data)
   }
 
   return (

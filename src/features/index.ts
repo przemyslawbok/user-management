@@ -1,5 +1,14 @@
+import { apiSlice } from './api';
 import { Layout } from './ui';
-import { addUser, getAllUsers, UserForm, UsersList, usersReducer } from './users';
+import { useAddUserMutation, useDeleteUserMutation, useGetUserByIdQuery, useGetUsersQuery, UserForm, UsersList, usersSlice, useUpdateUserMutation } from './users';
 
 export { Layout, UsersList, UserForm }
-export { usersReducer, getAllUsers, addUser }
+export { apiSlice }
+export { 
+  usersSlice, 
+  useGetUsersQuery, 
+  useGetUserByIdQuery,
+  useAddUserMutation, 
+  useUpdateUserMutation, 
+  useDeleteUserMutation 
+} 

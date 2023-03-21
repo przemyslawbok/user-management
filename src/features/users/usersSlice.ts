@@ -1,43 +1,82 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { User } from '@/common'
+import { createSelector } from '@reduxjs/toolkit'
+import { apiSlice } from '@/features'
 
-const initialState: User[] = [
-  { 
-    id: 1,
-    name: 'Przemek',
-    username: 'Jules',
-    email: 'a@a.pl',
-    city: 'Białystok',
-  },
-    { 
-    id: 2,
-    name: 'Adam',
-    username: 'Torineq',
-    email: 'b@b.pl',
-    city: 'Białystok',
+interface IUserData {
+  id: number,
+  name: string,
+  username: string,
+  email: string,
+  address: {
+    city: string
   }
-]
-
-const usersSlice = createSlice({
-  name: 'users',
-  initialState,
-  reducers: {
-    addUser: (state, action: PayloadAction<User>) => {
-      const user = {
-        ...action.payload,
-        id: Math.max(...state.map(user => user.id)) + 1
-      }
-      state.push(user)
-    },
-  }
-})
-
-interface IUserState {
-  users: User[]
 }
 
-export const getAllUsers = (state: IUserState) => state.users
+export const usersSlice = apiSlice.injectEndpoints({
+  endpoints: (builder) => ({
+    getUsers: builder.query<User[], void>({
+      query: () => '/users',
+      transformResponse: (responseData: IUserData[]) => {
+        return responseData.map(user => ({
+          ...user, city: user.address.city
+        }))
+      },
+      providesTags: ['User']
+    }),
+    getUserById: builder.query<User[], { id: number }>({
+      query: ({ id }) => `/users/${id}`,
+      transformResponse: (responseData: IUserData[]) => {
+        return responseData.map(user => ({
+          ...user, city: user.address.city
+        }))
+      },
+      providesTags: ['User']
+    }),
+    addUser: builder.mutation({
+      query: (user: User) => ({
+        url: '/users',
+        method: 'POST',
+        body: {
+          ...user,
+          address: {
+            city: user.city
+          }
+        }
+      }),
+      invalidatesTags: ['User']
+    }),
+    updateUser: builder.mutation({
+      query: (user: User) => ({
+        url: `/users/${user.id}`,
+        method: 'PUT',
+        body: {
+          ...user,
+          address: {
+            city: user.city
+          }
+        }
+      }),
+      invalidatesTags: ['User']
+    }),
+    deleteUser: builder.mutation({
+      query: ({ id }) => ({
+        url: `/users/${id}`,
+        method: 'DELETE',
+        body: { id }
+      }),
+      invalidatesTags: ['User']
+    })
+  })
+})
 
-export const { addUser } = usersSlice.actions
+export const selectUsersResult = usersSlice.endpoints.getUsers.select()
 
-export default usersSlice.reducer
+const selectUsersData = createSelector(selectUsersResult, usersResult => usersResult.data)
+
+export const { 
+  useGetUsersQuery, 
+  useGetUserByIdQuery,
+  useAddUserMutation, 
+  useUpdateUserMutation, 
+  useDeleteUserMutation 
+} = usersSlice
