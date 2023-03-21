@@ -1,6 +1,6 @@
 import { User } from '@/common'
 import { TableBody, TableCell, TableContainer, TableRow } from '@mui/material'
-import React, { FC } from 'react'
+import { FC } from 'react'
 import { useSelector } from 'react-redux'
 import { getAllUsers } from '@/features/users'
 import { HeadCell, headCells } from './UsersList.data'

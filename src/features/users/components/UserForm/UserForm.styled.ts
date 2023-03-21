@@ -1,28 +1,29 @@
 import styled from '@emotion/styled';
-import { InputLabel, TextField } from '@mui/material';
+import { Button } from '@mui/material';
 
 export const Form = styled.form`
   margin: 1rem;
-`
-
-export const InputContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  margin-bottom: 1rem;
-`
-
-export const StyledInputLabel = styled(InputLabel)`
-  margin-right: 1rem;
-`
-
-export const StyledTextField = styled(TextField)`
-  width: 600px;
 `
 
 export const ButtonContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   gap: 0.5rem;
+`
+
+export const CancelButton = styled(Button)`
+  border-color: red;
+  color: red;
+
+  &:hover {
+    border-color: red;
+  }
+`
+
+export const SubmitButton = styled(Button)`
+  background-color: green;
+
+    &:hover {
+    background-color: green;
+  }
 `

@@ -1,12 +1,12 @@
 import { Layout, UsersList } from '@/features'
-import { CardHeader } from './index.styled'
-import { Button, Card, CardContent, Typography } from '@mui/material'
+import { CardHeader, StyledCard } from './index.styled'
+import { Button, CardContent, Typography } from '@mui/material'
 import { onAddUserClick } from './index.logic'
 
 const Home = () => {
   return (
     <Layout name="Home" description="User Management Home Page">
-      <Card sx={{ maxWidth: 800 }}>
+      <StyledCard>
         <CardContent>
           <CardHeader>
             <Typography variant="h5">User List</Typography>
@@ -16,7 +16,7 @@ const Home = () => {
           </CardHeader>
           <UsersList />
         </CardContent>
-      </Card>
+      </StyledCard>
     </Layout>
   )
 }

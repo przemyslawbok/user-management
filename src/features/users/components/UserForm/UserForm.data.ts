@@ -1,5 +1,9 @@
-import { UserFieldName } from '@/common'
+import { User, UserFieldName } from '@/common'
 import * as yup from 'yup'
+
+export interface IUserFormProps {
+  formSubmitAction: (data: User) => void
+}
 
 export const FormFieldNames = {
   Name: 'name' as UserFieldName,
@@ -8,7 +12,7 @@ export const FormFieldNames = {
   City: 'city' as UserFieldName
 }
 
-export const validationSchema = yup.object().shape({
+export const ValidationSchema = yup.object().shape({
   name: yup.string().min(3).required(),
   username: yup.string().min(3).max(20).required(),
   email: yup.string().email().required(),

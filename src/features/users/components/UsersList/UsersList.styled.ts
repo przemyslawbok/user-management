@@ -11,8 +11,16 @@ export const StyledTableHead = styled(TableHead)`
 
 export const EditButton = styled(Button)`
   background-color: orange;
+
+  &:hover {
+    background-color: orange;
+  }
 `
 
 export const DeleteButton = styled(Button)`
   background-color: red;
+
+  &:hover {
+    background-color: red;
+  }
 `
