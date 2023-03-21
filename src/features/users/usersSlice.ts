@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { User } from '@/common'
 
 const initialState: User[] = [
@@ -22,9 +22,13 @@ const usersSlice = createSlice({
   name: 'users',
   initialState,
   reducers: {
-    addUser: (state, action) => {
-      state.push(action.payload)
-    }
+    addUser: (state, action: PayloadAction<User>) => {
+      const user = {
+        ...action.payload,
+        id: Math.max(...state.map(user => user.id)) + 1
+      }
+      state.push(user)
+    },
   }
 })
 

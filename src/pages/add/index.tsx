@@ -10,12 +10,7 @@ const Add = () => {
   const dispatch = useDispatch()
 
   const formSubmitAction = (data: User) => {
-    dispatch(
-      addUser({
-        ...data,
-        id: 3,
-      })
-    )
+    dispatch(addUser(data))
   }
 
   return (

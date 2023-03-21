@@ -1,5 +1,4 @@
 import { User } from '@/common'
-import { Button } from '@mui/material'
 import { useForm } from 'react-hook-form'
 import {
   FormFieldNames,
@@ -15,7 +14,7 @@ import {
 } from './UserForm.styled'
 import { FC } from 'react'
 import { onCancelClick, onSubmit } from './UserForm.logic'
-import FormField from './components/FormField/FormField'
+import { FormField } from './components'
 
 const UserForm: FC<IUserFormProps> = (props) => {
   const { formSubmitAction } = props
