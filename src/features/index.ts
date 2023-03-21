@@ -1,5 +1,5 @@
 import { Layout } from './ui';
-import { UsersList, usersReducer } from './users';
+import { addUser, getAllUsers, UserForm, UsersList, usersReducer } from './users';
 
-export { Layout, UsersList }
-export { usersReducer }
+export { Layout, UsersList, UserForm }
+export { usersReducer, getAllUsers, addUser }

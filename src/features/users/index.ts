@@ -1,5 +1,5 @@
-import { UsersList } from './components';
-import usersReducer, { getAllUsers } from './usersSlice';
+import { UserForm, UsersList } from './components';
+import usersReducer, { addUser, getAllUsers } from './usersSlice';
 
-export { UsersList }
-export { usersReducer, getAllUsers }
+export { UsersList, UserForm }
+export { usersReducer, getAllUsers, addUser }

@@ -2,6 +2,7 @@ import { User, UserFieldName } from '@/common'
 import * as yup from 'yup'
 
 export interface IUserFormProps {
+  user?: User
   formSubmitAction: (data: User) => void
 }
 

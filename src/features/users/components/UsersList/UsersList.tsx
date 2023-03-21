@@ -2,7 +2,7 @@ import { User } from '@/common'
 import { TableBody, TableCell, TableContainer, TableRow } from '@mui/material'
 import { FC } from 'react'
 import { useSelector } from 'react-redux'
-import { getAllUsers } from '@/features/users'
+import { getAllUsers } from '@/features'
 import { HeadCell, headCells } from './UsersList.data'
 import {
   DeleteButton,
@@ -10,6 +10,7 @@ import {
   StyledTable,
   StyledTableHead,
 } from './UsersList.styled'
+import { onEditClick } from './UsersList.logic'
 
 const UsersList: FC = () => {
   const users = useSelector(getAllUsers)
@@ -33,7 +34,9 @@ const UsersList: FC = () => {
               <TableCell>{user.email}</TableCell>
               <TableCell>{user.city}</TableCell>
               <TableCell>
-                <EditButton variant="contained">edit</EditButton>
+                <EditButton variant="contained" onClick={onEditClick(user.id)}>
+                  edit
+                </EditButton>
               </TableCell>
               <TableCell>
                 <DeleteButton variant="contained">delete</DeleteButton>

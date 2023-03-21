@@ -1,7 +1,5 @@
 import { User } from '@/common'
-import { Layout } from '@/features'
-import { UserForm } from '@/features/users/components'
-import { addUser } from '@/features/users/usersSlice'
+import { Layout, UserForm, addUser } from '@/features'
 import { Typography } from '@mui/material'
 import { useDispatch } from 'react-redux'
 import { CardHeader, StyledCard } from './index.styled'
