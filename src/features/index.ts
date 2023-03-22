@@ -1,8 +1,8 @@
 import { apiSlice } from './api';
-import { Layout, OkCancelDialog } from './ui';
+import { Layout, Loader, OkCancelDialog } from './ui';
 import { useAddUserMutation, useDeleteUserMutation, useGetUserByIdQuery, useGetUsersQuery, UserForm, UsersList, usersSlice, useUpdateUserMutation } from './users';
 
-export { Layout, OkCancelDialog, UsersList, UserForm }
+export { Layout, OkCancelDialog, Loader, UsersList, UserForm }
 
 export { apiSlice }
 

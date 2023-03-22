@@ -13,7 +13,7 @@ import {
   SubmitButton,
 } from './UserForm.styled'
 import { FC } from 'react'
-import { onCancelClick, onSubmit } from './UserForm.logic'
+import { getDefaultValues, onCancelClick, onSubmit } from './UserForm.logic'
 import { FormField } from './components'
 
 const UserForm: FC<IUserFormProps> = (props) => {
@@ -24,6 +24,7 @@ const UserForm: FC<IUserFormProps> = (props) => {
     handleSubmit,
     formState: { errors },
   } = useForm<User>({
+    defaultValues: getDefaultValues(user),
     resolver: yupResolver(ValidationSchema),
   })
 
@@ -32,28 +33,24 @@ const UserForm: FC<IUserFormProps> = (props) => {
       <FormField
         fieldName={FormFieldNames.Name}
         label="Name"
-        value={user?.name}
         register={register}
         error={errors.name}
       />
       <FormField
         fieldName={FormFieldNames.Username}
         label="Username"
-        value={user?.username}
         register={register}
         error={errors.username}
       />
       <FormField
         fieldName={FormFieldNames.Email}
         label="Email"
-        value={user?.email}
         register={register}
         error={errors.email}
       />
       <FormField
         fieldName={FormFieldNames.City}
         label="City"
-        value={user?.city}
         register={register}
         error={errors.city}
       />

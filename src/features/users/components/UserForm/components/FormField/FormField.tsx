@@ -7,7 +7,7 @@ import {
 } from './FormField.styled'
 
 const FormField: FC<IFormFieldProps> = (props) => {
-  const { fieldName, label, value, register, error } = props
+  const { fieldName, label, register, error } = props
 
   return (
     <InputContainer>
@@ -17,7 +17,6 @@ const FormField: FC<IFormFieldProps> = (props) => {
         {...register(fieldName)}
         error={error !== undefined}
         helperText={error?.message}
-        value={value}
       />
     </InputContainer>
   )

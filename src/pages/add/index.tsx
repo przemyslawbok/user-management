@@ -11,10 +11,10 @@ const Add = () => {
   const formSubmitAction = async (data: User) => {
     try {
       await addUser(data).unwrap()
-      if (!isLoading) toast.success('User saved successfully')
+      if (!isLoading) toast.success('User added successfully')
     } catch (error) {
-      //Logging logic here
-      toast.error('Failed to save user!')
+      console.error(error)
+      toast.error('Failed to add user!')
     }
   }
 

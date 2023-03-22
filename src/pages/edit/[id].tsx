@@ -1,20 +1,40 @@
 import { User } from '@/common'
-import { getAllUsers, Layout, UserForm } from '@/features'
+import {
+  Layout,
+  Loader,
+  useGetUserByIdQuery,
+  UserForm,
+  useUpdateUserMutation,
+} from '@/features'
 import { Typography } from '@mui/material'
 import { useRouter } from 'next/router'
-import { useSelector } from 'react-redux'
+import toast from 'react-hot-toast'
 import { CardHeader, StyledCard } from './[id].styled'
 
 const Edit = () => {
   const router = useRouter()
-  const users = useSelector(getAllUsers)
 
   const { id } = router.query
 
-  const user = users.find((user) => user.id === Number(id))
+  const { data: user, isLoading } = useGetUserByIdQuery({ id: Number(id) })
 
-  const formSubmitAction = (data: User) => {
-    //dispatch(addUser(data))
+  const [updateUser, { isLoading: isUpdateUserLoading }] =
+    useUpdateUserMutation()
+
+  const formSubmitAction = async (data: User) => {
+    const updatedUser = {
+      ...data,
+      id: Number(id),
+    }
+
+    try {
+      await updateUser(updatedUser).unwrap()
+      if (!isUpdateUserLoading) toast.success('User updated successfully')
+    } catch (error) {
+      //Logging logic here
+      console.error(error)
+      toast.error('Failed to update user!')
+    }
   }
 
   return (
@@ -23,7 +43,14 @@ const Edit = () => {
         <CardHeader>
           <Typography variant="h5">Edit Form</Typography>
         </CardHeader>
-        <UserForm user={user} formSubmitAction={formSubmitAction} />
+        {isLoading && <Loader />}
+        {!isLoading && (
+          <UserForm
+            user={user}
+            formSubmitAction={formSubmitAction}
+            isLoading={isUpdateUserLoading}
+          />
+        )}
       </StyledCard>
     </Layout>
   )

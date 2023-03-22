@@ -1,5 +1,4 @@
 import { User } from '@/common'
-import { createSelector } from '@reduxjs/toolkit'
 import { apiSlice } from '@/features'
 
 interface IUserData {
@@ -12,6 +11,8 @@ interface IUserData {
   }
 }
 
+const UserTag = 'User'
+
 export const usersSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getUsers: builder.query<User[], void>({
@@ -21,16 +22,16 @@ export const usersSlice = apiSlice.injectEndpoints({
           ...user, city: user.address.city
         }))
       },
-      providesTags: ['User']
+      providesTags: [UserTag]
     }),
-    getUserById: builder.query<User[], { id: number }>({
+    getUserById: builder.query<User, { id: number }>({
       query: ({ id }) => `/users/${id}`,
-      transformResponse: (responseData: IUserData[]) => {
-        return responseData.map(user => ({
-          ...user, city: user.address.city
-        }))
+      transformResponse: (responseData: IUserData) => {
+        return ({
+          ...responseData, city: responseData.address.city
+        })
       },
-      providesTags: ['User']
+      providesTags: [UserTag]
     }),
     addUser: builder.mutation({
       query: (user: User) => ({
@@ -43,7 +44,7 @@ export const usersSlice = apiSlice.injectEndpoints({
           }
         }
       }),
-      invalidatesTags: ['User']
+      invalidatesTags: [UserTag]
     }),
     updateUser: builder.mutation({
       query: (user: User) => ({
@@ -56,7 +57,7 @@ export const usersSlice = apiSlice.injectEndpoints({
           }
         }
       }),
-      invalidatesTags: ['User']
+      invalidatesTags: [UserTag]
     }),
     deleteUser: builder.mutation({
       query: ({ id }) => ({
@@ -64,14 +65,10 @@ export const usersSlice = apiSlice.injectEndpoints({
         method: 'DELETE',
         body: { id }
       }),
-      invalidatesTags: ['User']
+      invalidatesTags: [UserTag]
     })
   })
 })
-
-export const selectUsersResult = usersSlice.endpoints.getUsers.select()
-
-const selectUsersData = createSelector(selectUsersResult, usersResult => usersResult.data)
 
 export const { 
   useGetUsersQuery, 
