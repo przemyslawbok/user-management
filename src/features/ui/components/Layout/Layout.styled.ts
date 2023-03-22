@@ -2,9 +2,8 @@ import styled from '@emotion/styled'
 
 export const Main = styled.main`
   background-color: #e7ebf0;
-  width: 100vw;
-  height: 100vh;
-  overflow-y: scroll;
+  max-width: 100vw;
+  min-height: 100vh;
 
   display: flex;
   align-items: center;

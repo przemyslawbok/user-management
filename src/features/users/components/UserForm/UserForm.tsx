@@ -17,7 +17,7 @@ import { onCancelClick, onSubmit } from './UserForm.logic'
 import { FormField } from './components'
 
 const UserForm: FC<IUserFormProps> = (props) => {
-  const { user, formSubmitAction } = props
+  const { user, formSubmitAction, isLoading } = props
 
   const {
     register,
@@ -28,7 +28,7 @@ const UserForm: FC<IUserFormProps> = (props) => {
   })
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit(formSubmitAction))}>
+    <Form onSubmit={handleSubmit(onSubmit(formSubmitAction, isLoading))}>
       <FormField
         fieldName={FormFieldNames.Name}
         label="Name"
@@ -58,10 +58,14 @@ const UserForm: FC<IUserFormProps> = (props) => {
         error={errors.city}
       />
       <ButtonContainer>
-        <CancelButton variant="outlined" onClick={onCancelClick}>
+        <CancelButton
+          disabled={isLoading}
+          variant="outlined"
+          onClick={onCancelClick}
+        >
           Cancel
         </CancelButton>
-        <SubmitButton type="submit" variant="contained">
+        <SubmitButton disabled={isLoading} variant="contained" type="submit">
           Submit
         </SubmitButton>
       </ButtonContainer>

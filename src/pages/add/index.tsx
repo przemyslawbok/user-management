@@ -2,13 +2,20 @@ import { User } from '@/common'
 import { Layout, UserForm } from '@/features'
 import { useAddUserMutation } from '@/features/users/usersSlice'
 import { Typography } from '@mui/material'
+import toast from 'react-hot-toast'
 import { CardHeader, StyledCard } from './index.styled'
 
 const Add = () => {
   const [addUser, { isLoading }] = useAddUserMutation()
 
-  const formSubmitAction = (data: User) => {
-    addUser(data)
+  const formSubmitAction = async (data: User) => {
+    try {
+      await addUser(data).unwrap()
+      if (!isLoading) toast.success('User saved successfully')
+    } catch (error) {
+      //Logging logic here
+      toast.error('Failed to save user!')
+    }
   }
 
   return (
@@ -17,7 +24,7 @@ const Add = () => {
         <CardHeader>
           <Typography variant="h5">Add Form</Typography>
         </CardHeader>
-        <UserForm formSubmitAction={formSubmitAction} />
+        <UserForm formSubmitAction={formSubmitAction} isLoading={isLoading} />
       </StyledCard>
     </Layout>
   )

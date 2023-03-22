@@ -3,7 +3,8 @@ import * as yup from 'yup'
 
 export interface IUserFormProps {
   user?: User
-  formSubmitAction: (data: User) => void
+  formSubmitAction: (data: User) => Promise<void>
+  isLoading: boolean
 }
 
 export const FormFieldNames = {

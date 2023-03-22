@@ -2,12 +2,29 @@ import { User } from '@/common'
 import { TableBody, TableCell, TableContainer, TableRow } from '@mui/material'
 import { FC } from 'react'
 import { HeadCell, headCells } from './UsersList.data'
-import { DeleteButton, EditButton, StyledTable, StyledTableHead } from './UsersList.styled'
+import {
+  DeleteButton,
+  EditButton,
+  StyledTable,
+  StyledTableHead,
+} from './UsersList.styled'
 import { onEditClick } from './UsersList.logic'
 import { useGetUsersQuery } from '@/features'
+import toast from 'react-hot-toast'
 
 const UsersList: FC = () => {
-  const { data: users, isLoading, isSuccess, isError, error } = useGetUsersQuery()
+  const {
+    data: users,
+    isLoading,
+    isSuccess,
+    isError,
+    error,
+  } = useGetUsersQuery()
+
+  if (isError) {
+    //Logging logic here
+    toast.error('Failed to get user data')
+  }
 
   return (
     <TableContainer>

@@ -1,3 +1,3 @@
-import { Layout } from './components';
+import { Layout, OkCancelDialog } from './components';
 
-export { Layout }
+export { Layout, OkCancelDialog }

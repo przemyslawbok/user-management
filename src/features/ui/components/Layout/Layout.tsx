@@ -1,6 +1,7 @@
 import Head from 'next/head'
 
 import { FC } from 'react'
+import { Toaster } from 'react-hot-toast'
 import { ILayoutProps } from './Layout.data'
 import { Main, Wrapper } from './Layout.styled'
 
@@ -17,6 +18,7 @@ const Layout: FC<ILayoutProps> = (props) => {
       </Head>
       <Main>
         <Wrapper>{children}</Wrapper>
+        <Toaster />
       </Main>
     </>
   )
