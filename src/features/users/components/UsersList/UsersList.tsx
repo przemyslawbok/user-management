@@ -1,4 +1,4 @@
-import { Breakpoints, User } from '@/common'
+import { User } from '@/common'
 import { TableBody, TableCell, TableContainer, TableRow } from '@mui/material'
 import { FC, useEffect } from 'react'
 import { StyledTable } from './UsersList.styled'
@@ -20,7 +20,7 @@ const UsersList: FC = () => {
     }
   }, [isError, error])
 
-  const isDesktop = width >= Breakpoints.Tablet
+  const isDesktop = width >= 900
 
   const colspan = isDesktop ? 7 : 1
 

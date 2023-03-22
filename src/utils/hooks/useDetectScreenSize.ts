@@ -1,21 +1,25 @@
 import { useState, useEffect } from 'react';
 
 const useDetectScreenSize = () => {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [width, setWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
 
   useEffect(() => {
-    function handleResize() {
-      setWindowWidth(window.innerWidth);
+    if (typeof window === 'undefined') {
+      return;
     }
 
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+    
     window.addEventListener('resize', handleResize);
-
+    
     return () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
-
-  return windowWidth;
+  
+  return width;
 }
 
 export default useDetectScreenSize
