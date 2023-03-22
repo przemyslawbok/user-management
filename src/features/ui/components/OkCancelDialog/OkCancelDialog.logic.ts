@@ -3,7 +3,7 @@ import { MutationDefinition, BaseQueryFn, FetchArgs, FetchBaseQueryError, FetchB
 import { MutationTrigger } from '@reduxjs/toolkit/dist/query/react/buildHooks'
 import { Dispatch } from 'react'
 import toast from 'react-hot-toast'
-import { toggle } from '../../uiSlice'
+import { toggle } from '@/features'
 
 export const onCancelClick = (dispatch: Dispatch<AnyAction>) => {
   return () => dispatch(toggle({ userId: undefined, username: undefined }))

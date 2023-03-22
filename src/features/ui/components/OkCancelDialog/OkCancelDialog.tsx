@@ -1,16 +1,16 @@
 import { useDeleteUserMutation } from '@/features'
-import {
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-} from '@mui/material'
+import { Dialog, DialogContentText } from '@mui/material'
 import { FC } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { IUIState } from './OkCancelDialog.data'
 import { onCancelClick, onDeleteClick } from './OkCancelDialog.logic'
-import { CancelButton, DeleteButton } from './OkCancelDialog.styled'
+import {
+  CancelButton,
+  DeleteButton,
+  StyledDialogActions,
+  StyledDialogContent,
+  StyledDialogTitle,
+} from './OkCancelDialog.styled'
 
 const OkCancelDialog: FC = () => {
   const dispatch = useDispatch()
@@ -21,13 +21,13 @@ const OkCancelDialog: FC = () => {
 
   return (
     <Dialog open={userId !== undefined}>
-      <DialogTitle>Delete</DialogTitle>
-      <DialogContent>
+      <StyledDialogTitle>Delete</StyledDialogTitle>
+      <StyledDialogContent>
         <DialogContentText>
           Do you want to delete user: {username}?
         </DialogContentText>
-      </DialogContent>
-      <DialogActions>
+      </StyledDialogContent>
+      <StyledDialogActions>
         <CancelButton variant="contained" onClick={onCancelClick(dispatch)}>
           Cancel
         </CancelButton>
@@ -37,7 +37,7 @@ const OkCancelDialog: FC = () => {
         >
           Delete
         </DeleteButton>
-      </DialogActions>
+      </StyledDialogActions>
     </Dialog>
   )
 }
