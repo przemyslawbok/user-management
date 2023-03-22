@@ -13,6 +13,7 @@ const Add = () => {
       await addUser(data).unwrap()
       if (!isLoading) toast.success('User added successfully')
     } catch (error) {
+      //Logging logic here
       console.error(error)
       toast.error('Failed to add user!')
     }

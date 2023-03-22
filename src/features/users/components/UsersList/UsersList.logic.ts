@@ -1,8 +1,8 @@
-import { Routes } from '@/common'
-import { BaseQueryFn, FetchArgs, FetchBaseQueryError, FetchBaseQueryMeta, MutationDefinition } from '@reduxjs/toolkit/dist/query'
-import { MutationTrigger } from '@reduxjs/toolkit/dist/query/react/buildHooks'
+import { Routes, User } from '@/common'
+import { toggle } from '@/features/ui'
+import { AnyAction } from '@reduxjs/toolkit'
 import router from 'next/router'
-import toast from 'react-hot-toast'
+import { Dispatch } from 'react'
 
 export const onEditClick = (id: number) => {
   return () => {
@@ -10,18 +10,6 @@ export const onEditClick = (id: number) => {
   }
 }
 
-export const onDeleteClick = (
-    id: number, 
-    deleteUser: MutationTrigger<MutationDefinition<any, BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError, {}, FetchBaseQueryMeta>, "User", any, "api">>, 
-    isLoading: boolean) => {
-  return async () => {
-    try {
-      await deleteUser({ id }).unwrap()
-      if (!isLoading) 
-        toast.success('User deleted successfully')
-    }
-    catch (error) {
-      toast.error('Failed to delete user')
-    }
-  }
+export const onDeleteClick = (dispatch: Dispatch<AnyAction>, user: User) => {
+  return () => dispatch(toggle({ userId: user.id, username: user.username }))
 }

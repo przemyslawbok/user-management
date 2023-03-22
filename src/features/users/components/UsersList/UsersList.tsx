@@ -9,14 +9,14 @@ import {
   StyledTableHead,
 } from './UsersList.styled'
 import { onDeleteClick, onEditClick } from './UsersList.logic'
-import { Loader, useDeleteUserMutation, useGetUsersQuery } from '@/features'
+import { Loader, useGetUsersQuery } from '@/features'
 import toast from 'react-hot-toast'
+import { useDispatch } from 'react-redux'
 
 const UsersList: FC = () => {
-  const { data: users, isLoading, isError, error } = useGetUsersQuery()
+  const dispatch = useDispatch()
 
-  const [deleteUser, { isLoading: isDeleteUserLoading }] =
-    useDeleteUserMutation()
+  const { data: users, isLoading, isError, error } = useGetUsersQuery()
 
   if (isError) {
     //Logging logic here
@@ -61,11 +61,7 @@ const UsersList: FC = () => {
                 <TableCell>
                   <DeleteButton
                     variant="contained"
-                    onClick={onDeleteClick(
-                      user.id,
-                      deleteUser,
-                      isDeleteUserLoading
-                    )}
+                    onClick={onDeleteClick(dispatch, user)}
                   >
                     delete
                   </DeleteButton>

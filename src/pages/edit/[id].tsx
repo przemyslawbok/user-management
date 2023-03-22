@@ -16,7 +16,9 @@ const Edit = () => {
 
   const { id } = router.query
 
-  const { data: user, isLoading } = useGetUserByIdQuery({ id: Number(id) })
+  const { data: user, isLoading: isGetUserByIdLoading } = useGetUserByIdQuery({
+    id: Number(id),
+  })
 
   const [updateUser, { isLoading: isUpdateUserLoading }] =
     useUpdateUserMutation()
@@ -43,8 +45,8 @@ const Edit = () => {
         <CardHeader>
           <Typography variant="h5">Edit Form</Typography>
         </CardHeader>
-        {isLoading && <Loader />}
-        {!isLoading && (
+        {isGetUserByIdLoading && <Loader />}
+        {!isGetUserByIdLoading && (
           <UserForm
             user={user}
             formSubmitAction={formSubmitAction}

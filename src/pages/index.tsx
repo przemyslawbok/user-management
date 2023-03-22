@@ -1,4 +1,4 @@
-import { Layout, UsersList } from '@/features'
+import { Layout, OkCancelDialog, UsersList } from '@/features'
 import { CardHeader, StyledCard } from './index.styled'
 import { Button, CardContent, Typography } from '@mui/material'
 import { onAddUserClick } from './index.logic'
@@ -17,6 +17,7 @@ const Home = () => {
           <UsersList />
         </CardContent>
       </StyledCard>
+      <OkCancelDialog />
     </Layout>
   )
 }
