@@ -1,14 +1,12 @@
 import { TableCell, TableRow } from '@mui/material'
 import { FC } from 'react'
 import { useDispatch } from 'react-redux'
+import { DeleteButton } from '../DeleteButton'
+import { EditButton } from '../EditButton'
 import { ITableRowProps } from './UserTableRow.data'
-import { onDeleteClick, onEditClick } from './UserTableRow.logic'
-import { DeleteButton, EditButton } from './UserTableRow.styled'
 
 const UserTableRow: FC<ITableRowProps> = (props) => {
   const { user } = props
-
-  const dispatch = useDispatch()
 
   return (
     <TableRow>
@@ -18,17 +16,10 @@ const UserTableRow: FC<ITableRowProps> = (props) => {
       <TableCell>{user.email}</TableCell>
       <TableCell>{user.city}</TableCell>
       <TableCell>
-        <EditButton variant="contained" onClick={onEditClick(user.id)}>
-          edit
-        </EditButton>
+        <EditButton userId={user.id} />
       </TableCell>
       <TableCell>
-        <DeleteButton
-          variant="contained"
-          onClick={onDeleteClick(dispatch, user)}
-        >
-          delete
-        </DeleteButton>
+        <DeleteButton user={user} />
       </TableCell>
     </TableRow>
   )
