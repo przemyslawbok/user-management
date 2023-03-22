@@ -1,3 +1,4 @@
+import { Breakpoints } from '@/common'
 import styled from '@emotion/styled'
 
 export const Main = styled.main`
@@ -12,7 +13,7 @@ export const Main = styled.main`
 
 export const Wrapper = styled.section`
   width: 100%;
-  max-width: 1200px;
+  max-width: ${`${Breakpoints.Desktop}px`};
 
   display: flex;
   flex-direction: column;

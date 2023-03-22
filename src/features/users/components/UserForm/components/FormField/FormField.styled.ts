@@ -1,12 +1,19 @@
+import { Breakpoints } from '@/common'
 import styled from '@emotion/styled'
 import { InputLabel, TextField } from '@mui/material'
 
 export const InputContainer = styled.div`
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
 
   margin-bottom: 1rem;
+
+  @media screen and (min-width: ${`${Breakpoints.Mobile}px`}) {
+    flex-direction: row;  
+    justify-content: space-between;
+    align-items: center;
+  }
 `
 
 export const StyledInputLabel = styled(InputLabel)`
@@ -14,5 +21,9 @@ export const StyledInputLabel = styled(InputLabel)`
 `
 
 export const StyledTextField = styled(TextField)`
-  width: 600px;
+  width: 100%;
+
+  @media screen and (min-width: ${`${Breakpoints.Mobile}px`}) {
+    width: 600px;  
+  }
 `

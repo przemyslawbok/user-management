@@ -3,7 +3,7 @@ import { Card } from '@mui/material';
 
 export const StyledCard = styled(Card)`
   width: 100%;
-  max-width: 800px;
+  max-width: 50rem;
 `
 
 export const CardHeader = styled.div`
