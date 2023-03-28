@@ -1,6 +1,6 @@
 # Description
 
-This is a simple User Management app for purpose of recruitment processes.
+This is a simple User Management app for purpose of technical assessment in recruitment processes.
 
 # Tech Stack
 
